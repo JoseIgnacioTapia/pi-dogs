@@ -1,4 +1,9 @@
-import { GET_ALL_DOGS, GET_DOG_DETAIL, ERROR } from './action';
+import {
+  GET_ALL_DOGS,
+  GET_DOG_DETAIL,
+  CLEAR_DOG_DETAIL,
+  ERROR,
+} from './action';
 
 const initialState = {
   dogs: [],
@@ -17,6 +22,12 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case GET_DOG_DETAIL:
+      return {
+        ...state,
+        dogDetail: action.payload,
+      };
+
+    case CLEAR_DOG_DETAIL:
       return {
         ...state,
         dogDetail: action.payload,
