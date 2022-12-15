@@ -28,11 +28,13 @@ function Details() {
       ) : (
         <div>
           <img src={dogDetail.image} alt={dogDetail.name} />
-          <h2>{dogDetail.name}</h2>
-          <h3>{dogDetail.height}</h3>
-          <h3>{dogDetail.weight}</h3>
-          <h3>{dogDetail.lifeSpan}</h3>
-          <p>{dogDetail.temperament}</p>
+          <h2>Name: {dogDetail.name}</h2>
+          <h3>Altura: {dogDetail.height} cm</h3>
+          <h3>Peso: {dogDetail.weight} kgs</h3>
+          <h3>Años de vida (aproximados): {dogDetail.lifeSpan}</h3>
+          <p>
+            <span>Temperamentos:</span> {dogDetail.temperament}
+          </p>
         </div>
       )}
     </div>

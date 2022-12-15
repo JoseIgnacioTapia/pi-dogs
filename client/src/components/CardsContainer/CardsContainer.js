@@ -7,7 +7,7 @@ import Paginated from '../Paginated/Paginated';
 
 function CardsContainer() {
   const dogs = useSelector(state => state.dogs);
-  const error = useSelector(state => state.error);
+  const error = useSelector(state => state.error); // COMO MANEJAR LOS ERRORES???
 
   const dispatch = useDispatch();
 

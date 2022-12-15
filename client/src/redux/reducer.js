@@ -2,6 +2,7 @@ import {
   GET_ALL_DOGS,
   GET_DOG_DETAIL,
   CLEAR_DOG_DETAIL,
+  GET_TEMPERAMENTS,
   ERROR,
 } from './action';
 
@@ -9,6 +10,7 @@ const initialState = {
   dogs: [],
   allDogs: [],
   dogDetail: {},
+  temperaments: [],
   error: {},
 };
 
@@ -31,6 +33,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         dogDetail: action.payload,
+      };
+
+    case GET_TEMPERAMENTS:
+      return {
+        ...state,
+        temperaments: action.payload,
       };
 
     case ERROR:
