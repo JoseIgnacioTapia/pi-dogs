@@ -29,22 +29,39 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
   };
 
+  const handleDeleteTemperament = temp => {
+    const newArr = form.temperaments.filter(t => t !== temp);
+
+    setForm({
+      ...form,
+      temperaments: newArr,
+    });
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
 
-    try {
-      await fetch(URL, {
-        method: 'POST',
-        body: JSON.stringify(form),
-        headers: {
-          Accept: 'application/json, text/plain, */*',
-          'Content-Type': 'application/json',
-        },
-      });
-    } catch (error) {
-      setLoading(false);
-      setResponse(error.status);
-      setForm(initialForm);
+    if (Object.keys(validateForm(form)).length === 0) {
+      setLoading(true);
+
+      try {
+        await fetch(URL, {
+          method: 'POST',
+          body: JSON.stringify(form),
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+        });
+        setLoading(false);
+        setResponse(true);
+        setTimeout(() => setResponse(false), 5000);
+        setForm(initialForm);
+      } catch (error) {
+        setLoading(false);
+        setResponse(error.status);
+        setForm(initialForm);
+      }
     }
   };
 
@@ -55,6 +72,7 @@ export const useForm = (initialForm, validateForm) => {
     response,
     handleChange,
     handleBlur,
+    handleDeleteTemperament,
     handleSubmit,
   };
 };

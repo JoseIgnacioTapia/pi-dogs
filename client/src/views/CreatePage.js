@@ -32,6 +32,7 @@ function CreatePage() {
     response,
     handleChange,
     handleBlur,
+    handleDeleteTemperament,
     handleSubmit,
   } = useForm(initialForm, validationsForm);
 
@@ -141,6 +142,16 @@ function CreatePage() {
             </select>
             {errors.temperaments && <p>{errors.temperaments}</p>}
           </div>
+          <div>
+            {form.temperaments?.map(c => {
+              return (
+                <div key={c}>
+                  <p>{c}</p>
+                  <button onClick={() => handleDeleteTemperament(c)}>X</button>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <input
@@ -149,6 +160,8 @@ function CreatePage() {
           value="CREAR"
         />
       </form>
+      {loading && <p>Enviando...</p>}
+      {response && <p>Los datos se enviaron correctamente</p>}
     </div>
   );
 }
