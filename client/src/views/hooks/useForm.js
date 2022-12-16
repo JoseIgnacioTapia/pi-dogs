@@ -24,6 +24,11 @@ export const useForm = (initialForm, validateForm) => {
     console.log(form);
   };
 
+  const handleBlur = e => {
+    handleChange(e);
+    setErrors(validateForm(form));
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -49,6 +54,7 @@ export const useForm = (initialForm, validateForm) => {
     loading,
     response,
     handleChange,
+    handleBlur,
     handleSubmit,
   };
 };
