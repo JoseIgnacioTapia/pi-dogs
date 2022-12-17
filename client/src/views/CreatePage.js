@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTemperaments } from '../redux/action';
-import { useForm } from './hooks/useForm';
+import { useForm } from '../hooks/useForm';
 import Navbar from '../components/Navbar/Navbar';
 import { validationsForm } from '../helpers/helpers.js';
 

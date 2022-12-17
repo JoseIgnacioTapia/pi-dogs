@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getAllDogs } from '../../redux/action';
-import Card from '../Card/Card';
+import Card from '../card/Card';
 import { Link } from 'react-router-dom';
-import Paginated from '../Paginated/Paginated';
+import Paginated from '../paginated/Paginated';
 
 function CardsContainer() {
   const dogs = useSelector(state => state.dogs);
   const error = useSelector(state => state.error); // COMO MANEJAR LOS ERRORES???
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,6 +20,7 @@ function CardsContainer() {
   const indexOFLastDog = currentPage * dogsPerPage - 1; // (3*8)-1=23
   const indexOfFirstDog = indexOFLastDog - (dogsPerPage - 1); // 23-7=16
   const currentDogs = dogs.slice(indexOfFirstDog, indexOFLastDog + 1); // (0, 7)(8, 15)(16, 23)
+  console.log(currentDogs);
 
   const paginated = pageNumber => {
     setCurrentPage(pageNumber);

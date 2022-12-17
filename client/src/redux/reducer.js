@@ -3,6 +3,7 @@ import {
   GET_DOG_DETAIL,
   CLEAR_DOG_DETAIL,
   GET_TEMPERAMENTS,
+  GET_SEARCH_DOG,
   ERROR,
 } from './action';
 
@@ -39,6 +40,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         temperaments: action.payload,
+      };
+
+    case GET_SEARCH_DOG:
+      return {
+        ...state,
+        dogs: action.payload,
       };
 
     case ERROR:
