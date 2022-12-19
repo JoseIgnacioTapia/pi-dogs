@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Navbar from '../components/Navbar/Navbar';
+import Navbar from '../components/navbar/Navbar';
 import { getDogDetail, clearDogDetail, setLoading } from '../redux/action.js';
 
 function Details() {

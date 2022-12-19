@@ -1,12 +1,14 @@
 import CardsContainer from '../components/cardsContainer/CardsContainer';
 import Navbar from '../components/navbar/Navbar';
 import SearchBar from '../components/searchBar/SearchBar';
+import SelectByTemperament from '../components/selectByTemperament.js/SelectByTemperament';
 
 function MainPage() {
   return (
     <div>
       <Navbar />
       <SearchBar />
+      <SelectByTemperament />
       <CardsContainer />
     </div>
   );
