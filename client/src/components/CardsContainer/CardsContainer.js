@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getAllDogs } from '../../redux/action';
-import Card from '../card/Card';
 import { Link } from 'react-router-dom';
+import { getAllDogs, sortByAlphabetic } from '../../redux/action';
+import Card from '../card/Card';
 import Paginated from '../paginated/Paginated';
+import SelectByOrder from '../selectByOrder/SelectByOrder';
 
 function CardsContainer() {
   const dogs = useSelector(state => state.dogs);
   const error = useSelector(state => state.error); // COMO MANEJAR LOS ERRORES???
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,8 +29,22 @@ function CardsContainer() {
     setCurrentPage(pageNumber);
   };
 
+  const [orderAlpha, setOrderAlpha] = useState('');
+  const [newOrder, setNewOrder] = useState();
+
+  useEffect(() => {
+    if (orderAlpha !== '') {
+      dispatch(sortByAlphabetic(orderAlpha));
+      setNewOrder(`Ordenado ${orderAlpha}`);
+    }
+  }, [dispatch, currentPage, orderAlpha]);
+
   return (
     <div>
+      <SelectByOrder
+        setCurrentPage={setCurrentPage}
+        setOrderAlpha={setOrderAlpha}
+      />
       <Paginated
         dogsPerPage={dogsPerPage}
         totalDogs={dogs.length}

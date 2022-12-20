@@ -6,6 +6,7 @@ import {
   GET_SEARCH_DOG,
   FILTER_BY_TEMPERAMENT,
   FILTER_BY_DOG,
+  SORT_ALPHA,
   ERROR,
 } from './action';
 
@@ -78,6 +79,24 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         dogs: dogsFiltered,
+      };
+
+    case SORT_ALPHA:
+      let sortedArr =
+        action.payload === 'asc'
+          ? state.dogs.sort((a, b) => {
+              if (a.name < b.name) return -1;
+              if (a.name > b.name) return 1;
+              else return 0;
+            })
+          : state.dogs.sort((a, b) => {
+              if (a.name < b.name) return 1;
+              if (a.name > b.name) return -1;
+              else return 0;
+            });
+      return {
+        ...state,
+        countries: sortedArr,
       };
 
     case ERROR:

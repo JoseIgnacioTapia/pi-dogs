@@ -6,6 +6,7 @@ export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 export const GET_SEARCH_DOG = 'GET_SEARCH_DOG';
 export const FILTER_BY_DOG = 'FILTER_BY_DOG';
 export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT';
+export const SORT_ALPHA = 'SORT_ALPHA';
 export const ERROR = 'ERROR';
 
 export const getAllDogs = () => {
@@ -79,4 +80,8 @@ export const filterDogsByTemperament = temperament => {
 
 export const filterDogsByDogs = dog => {
   return { type: FILTER_BY_DOG, payload: dog };
+};
+
+export const sortByAlphabetic = order => {
+  return { type: SORT_ALPHA, payload: order };
 };
