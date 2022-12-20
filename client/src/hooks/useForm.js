@@ -9,19 +9,20 @@ export const useForm = (initialForm, validateForm) => {
   const [response, setResponse] = useState(null);
 
   const handleChange = e => {
-    if (e.target.name === 'temperaments') {
-      setForm({
-        ...form,
-        temperaments: [...new Set([...form.temperaments, e.target.value])],
-      });
-    } else {
-      setForm({
-        ...form,
-        [e.target.name]: e.target.value,
-      });
-    }
+    const newValues =
+      e.target.name === 'temperaments'
+        ? {
+            ...form,
+            temperaments: [...new Set([...form.temperaments, e.target.value])],
+          }
+        : {
+            ...form,
+            [e.target.name]: e.target.value,
+          };
 
-    console.log(form);
+    setForm(newValues);
+
+    console.log(newValues);
   };
 
   const handleBlur = e => {

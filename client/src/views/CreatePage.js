@@ -129,7 +129,9 @@ function CreatePage() {
             <label htmlFor="temperaments">Temperamentos:</label>
             <select
               name="temperaments"
-              defaultValue="default"
+              value={
+                form.temperaments.length ? form.temperaments.at(-1) : 'default'
+              }
               onChange={handleChange}
               onBlur={handleBlur}
             >

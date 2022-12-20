@@ -5,6 +5,7 @@ import {
   GET_TEMPERAMENTS,
   GET_SEARCH_DOG,
   FILTER_BY_TEMPERAMENT,
+  FILTER_BY_DOG,
   ERROR,
 } from './action';
 
@@ -51,7 +52,6 @@ const rootReducer = (state = initialState, action) => {
 
     case FILTER_BY_TEMPERAMENT:
       const allDogs = state.allDogs;
-
       const temperamentsFiltered =
         action.payload === 'default'
           ? allDogs
@@ -64,6 +64,20 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         dogs: temperamentsFiltered,
+      };
+
+    case FILTER_BY_DOG:
+      const allDogsTwo = state.allDogs;
+      console.log(allDogsTwo);
+      console.log(action.payload);
+      const dogsFiltered =
+        action.payload === 'default'
+          ? allDogsTwo
+          : allDogsTwo.filter(d => d.name === action.payload);
+      console.log(dogsFiltered);
+      return {
+        ...state,
+        dogs: dogsFiltered,
       };
 
     case ERROR:

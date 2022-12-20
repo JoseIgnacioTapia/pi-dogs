@@ -4,6 +4,7 @@ export const CLEAR_DOG_DETAIL = 'CLEAR_DOG_DETAIL';
 export const SET_LOADING_DOG = 'SET_LOADING_DOG';
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 export const GET_SEARCH_DOG = 'GET_SEARCH_DOG';
+export const FILTER_BY_DOG = 'FILTER_BY_DOG';
 export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT';
 export const ERROR = 'ERROR';
 
@@ -74,4 +75,8 @@ export const getSearchDog = name => {
 
 export const filterDogsByTemperament = temperament => {
   return { type: FILTER_BY_TEMPERAMENT, payload: temperament };
+};
+
+export const filterDogsByDogs = dog => {
+  return { type: FILTER_BY_DOG, payload: dog };
 };
