@@ -22,7 +22,6 @@ function CardsContainer() {
   const indexOFLastDog = currentPage * dogsPerPage - 1; // (3*8)-1=23
   const indexOfFirstDog = indexOFLastDog - (dogsPerPage - 1); // 23-7=16
   const currentDogs = dogs.slice(indexOfFirstDog, indexOFLastDog + 1); // (0, 7)(8, 15)(16, 23)
-  console.log(currentDogs);
 
   const paginated = pageNumber => {
     setCurrentPage(pageNumber);
