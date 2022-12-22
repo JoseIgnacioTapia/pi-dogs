@@ -38,3 +38,17 @@ export const validationsForm = form => {
 
   return errors;
 };
+
+export const averageWeight = w => {
+  let wArr = [];
+  let weight;
+
+  if (w.includes(' - ')) {
+    wArr = w.split(' - ');
+    weight = (parseInt(wArr[0]) + parseInt(wArr[1])) / 2;
+  } else {
+    weight = parseInt(w);
+  }
+
+  return weight;
+};
